@@ -14,7 +14,8 @@ public class Iterator {
     public Lexem ToNext() {
         /** Метод возвращающий следущию лексему*/
          Lexem lex = new Lexem(subStr[ this.count++]);
-         lex.GetString();
+        System.err.println(this.count);
+
          return lex;}
 
      public  boolean Empty(){
