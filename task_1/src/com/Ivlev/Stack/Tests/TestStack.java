@@ -26,6 +26,10 @@ public class TestStack {
                 TestStack0.Push(str_4);
                Object str_5 = TestStack0.Peek();
                System.out.println(str_5.toString());
+            //Тест на пустоту стека
+               System.out.println(TestStack0.Empty());
+               Object str_6 = TestStack0.Pop();
+                System.out.println(TestStack0.Empty());
 
 
 
