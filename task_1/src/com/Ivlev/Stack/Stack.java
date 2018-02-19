@@ -6,11 +6,11 @@ public class Stack  implements SimpleStack {
      * ограниченной длинны
      * (в текушей реализации).                       !
      * StackArray - стек
-     * size             - размер стека
+     * count            - размер стека
      */
 
     private Object[] stackArray;
-    private int size =0;
+    private int count =0;
     //Выделить в класс
     public String status;
 
@@ -23,22 +23,19 @@ public class Stack  implements SimpleStack {
             }
         else
            {this.stackArray = new Object[stackSize];
-             this.size = 0;}
+             this.count = 0;}
            }
 
     @Override
     public void Push(Object object) {
-        this.stackArray[1] = object;
-     //   this.size++;
+        /** Метод добавляющий в стек элемент object*/
+        this.stackArray[this.count++] = object;
     }
-    //ush(Object elem){
-    // stackArray.add(elem);
-    ///** Метод добавляющий в стек элемент elem
-    // */        }
-   @Override
-    public int Peek() {
-        int a = 1;
-        return a;
+
+    @Override
+   /** Метод удаляющий изстека верхний элемент */
+    public Object Peek(){
+       return stackArray[--this.count];
    }
 
 
