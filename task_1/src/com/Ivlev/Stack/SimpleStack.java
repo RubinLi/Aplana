@@ -4,5 +4,5 @@ public interface SimpleStack{
      void Push(Object object) ;
     Object Pop();
     Object  Peek();
-    //boolean Empty();
+    boolean Empty();
 }

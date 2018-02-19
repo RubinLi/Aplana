@@ -46,11 +46,17 @@ public class Stack  implements SimpleStack {
     @Override
     /** Метод удаляющий из стека верхний элемент и возвращающий последний*/
     public Object Pop() {
-        if (this.stackSize == 0)
-        { System.err.println("Ошибка добавления в стек: стек переолнен:" + stackSize);
+        if (this.stackSize <= 1)
+        { System.err.println("Ошибка удаления из стека: стек пуст:" + stackSize);
+        //как быть без исключения...подумать                        !
         }
         return stackArray[--this.count];
     }
 
+    @Override
+    /** Метод определяющий пустоту стека*/
+    public boolean Empty() {
+        return(this.count ==0)? true :false;
+    }
 }
 
