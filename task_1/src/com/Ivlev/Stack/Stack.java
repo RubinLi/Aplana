@@ -10,7 +10,8 @@ public class Stack  implements SimpleStack {
      */
 
     private Object[] stackArray;
-    private int count =0;
+    private int count        = 0;
+    private int stackSize = 0;
     //Выделить в класс
     public String status;
 
@@ -23,23 +24,33 @@ public class Stack  implements SimpleStack {
             }
         else
            {this.stackArray = new Object[stackSize];
-             this.count = 0;}
+             this.count = 0;
+             this.stackSize =stackSize;}
            }
 
     @Override
     public void Push(Object object) {
         /** Метод добавляющий в стек элемент object*/
-        this.stackArray[this.count++] = object;
+        if(this.count<=this.stackSize)
+              {this.stackArray[this.count++] = object;}
+        else
+              {System.err.println("Ошибка добавления в стек: стек переолнен:" +stackSize);}
     }
 
     @Override
-   /** Метод удаляющий изстека верхний элемент */
-    public Object Peek(){
-       return stackArray[--this.count];
-   }
+   /** Метод возвращающий из стека верхний элемент */
+   public Object Peek() {
+        return stackArray[this.count-1];
+    }
 
-
-
+    @Override
+    /** Метод удаляющий из стека верхний элемент и возвращающий последний*/
+    public Object Pop() {
+        if (this.stackSize == 0)
+        { System.err.println("Ошибка добавления в стек: стек переолнен:" + stackSize);
+        }
+        return stackArray[--this.count];
+    }
 
 }
 
