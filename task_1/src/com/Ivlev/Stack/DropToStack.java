@@ -22,7 +22,7 @@ public class DropToStack {
                 }
             }
             Calculate(operators,operands,0);
-            return String.format("%4f", operands.Pop());
+            return String.format("%.4f%n", operands.Pop());
         }
 
         public  void Calculate(Stack operators,Stack operands, int priory){

@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
+        Help  help=  new Help();
+        System.out.print(help.getHelp());
         Scanner scan = new Scanner(System.in);
         String string ="";
         while(true){
