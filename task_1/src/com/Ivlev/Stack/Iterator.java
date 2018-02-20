@@ -14,13 +14,13 @@ public class Iterator {
     public Lexem ToNext() {
         /** Метод возвращающий следущию лексему*/
          Lexem lex = new Lexem(subStr[ this.count++]);
-        System.err.println(this.count);
+  //      System.err.println(this.count);
 
          return lex;}
 
      public  boolean Empty(){
         /** Метод проверяющий конец перебора лексем*/
-         return(this.count  == subStr.length)? true :false;
+         return(this.count  == subStr.length)? false :true;
 
      }
 }

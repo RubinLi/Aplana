@@ -10,7 +10,7 @@ public class Stack  implements SimpleStack {
      */
 
     private Object[] stackArray;
-    private int count        = 0;
+    public int count        = 0;
     private int stackSize = 0;
     //Выделить в класс
     public String status;
@@ -50,6 +50,7 @@ public class Stack  implements SimpleStack {
         { System.err.println("Ошибка удаления из стека: стек пуст:" + stackSize);
         //как быть без исключения...подумать                        !
         }
+       // System.err.println("Ошибка удаления из стека: стек пуст:" + this.count);
         return stackArray[--this.count];
     }
 
