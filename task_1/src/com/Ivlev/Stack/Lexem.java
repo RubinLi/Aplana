@@ -16,6 +16,8 @@ public class Lexem {
     private double data;
     private String  string;
     private String sign;
+    private String deliver = "/";
+
     private TypeLexem type;
 
     public Lexem(String string){
@@ -33,7 +35,7 @@ public class Lexem {
         /**метод,возвращает значение числа*/
         return this.sign;}
 
-     public TypeLexem  GetType(){
+     public  TypeLexem  GetType(){
          /** Метод,возвращает тип лексемы.*/
         switch (this.string){
                 case "+":  this.type = TypeLexem.operator ;
@@ -42,9 +44,22 @@ public class Lexem {
             case "-":  this.type = TypeLexem.operator ;
                 this.sign = this.string;
                 break;
+            case "*":  this.type = TypeLexem.operator ;
+                this.sign = this.string;
+                break;
+            case "/":  this.type = TypeLexem.operator ;
+                this.sign = this.string;
+                break;
             default:
+                if (this.string.split(this.deliver).length == 2 )
+                    {String[]  fraction = this.string.split(this.deliver);
+                    this.data=
+                            Double.parseDouble(fraction[0])/
+                                    Double.parseDouble(fraction[1]);
+                    }else{
                 this.data  = Double.parseDouble(this.string);
                 //без исключений только позитивные кейсы
+              }
                 this.type = TypeLexem.number;
                 break;
         }

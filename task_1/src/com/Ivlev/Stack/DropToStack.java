@@ -2,11 +2,8 @@ package com.Ivlev.Stack;
 
 
 public class DropToStack {
-    public static void main(String[] args) {
-        /**Заполняем стек значениями впроцессе вычесляя.*/
-    System.out.print("===="+ ToStack("1 - 2 + 3 + 5"));
-    }
-        public static double ToStack (String string){
+
+        public  String ToStack (String string){
             Stack operators  = new Stack(100);
             Stack operands   = new Stack(100);
             Iterator iterator = new Iterator(string);
@@ -15,33 +12,45 @@ public class DropToStack {
                 switch (lec.GetType()) {
                     case number:
                         operands.Push( lec.GetData() );
-                        System.out.print(lec.GetData());
+                    //    System.err.println( lec.GetData());
                         break;
                     case operator:
-                        System.out.println(lec.GetSign());
-                        Calculate(operators,operands);
+                        //System.err.println( Prior(lec.GetSign())+ " "+lec.GetSign());
+                        Calculate(operators,operands,Prior(lec.GetSign()));
                         operators.Push( lec.GetSign());
                         break;
                 }
             }
-            Calculate(operators,operands);
-            return (double) operands.Pop();
+            Calculate(operators,operands,0);
+            return String.format("%4f", operands.Pop());
         }
-        public static void Calculate(Stack operators,Stack operands){
-            while (!operators.Empty()){
-            double leftOperands=(double) operands.Pop();
-            double rightOperands=(double) operands.Pop();
-            String operator = (String) operators.Pop();
-                switch (operator) {
+
+        public  void Calculate(Stack operators,Stack operands, int priory){
+            while (!operators.Empty() && Prior( (String) operators.Peek()) >= priory){
+            double leftOperands    = (double) operands.Pop();
+            double rightOperands = (double) operands.Pop();
+            String operator               = (String  ) operators.Pop();
+                 switch (operator) {
                     case "+": operands.Push(leftOperands+rightOperands);
                                     break;
-                    case "-": operands.Push(leftOperands-rightOperands);                }
-
-
-
+                    case "-": operands.Push(leftOperands-rightOperands);
+                                   break;
+                   case "*": operands.Push(leftOperands*rightOperands);
+                                    break;
+                   case "/": operands.Push(rightOperands/ leftOperands);       break;         }
+            }
            }
+           public  int Prior(String sign){
+               int prior =0;
+               switch (sign) {
+                  case "+": prior =1;break;
+                  case "-": prior =1;break;
+                  case "*":prior =2;break;
+                  case "/": prior =2;break;
+                }
+                return prior;
            }
-        }
+       }
 
 
 
