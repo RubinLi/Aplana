@@ -7,7 +7,8 @@ enum   TypeLexem {
 public class Lexem {
     /**
      * Реализация Анализатора лексем                    !
-     * date            -  храним значения числа
+     * date             -  значения числа
+     * sign             -  значение знака
      * Type  - тип лексемы из словаря
      * TypeLexem
      */
@@ -36,6 +37,9 @@ public class Lexem {
          /** Метод,возвращает тип лексемы.*/
         switch (this.string){
                 case "+":  this.type = TypeLexem.operator ;
+                this.sign = this.string;
+                break;
+            case "-":  this.type = TypeLexem.operator ;
                 this.sign = this.string;
                 break;
             default:
