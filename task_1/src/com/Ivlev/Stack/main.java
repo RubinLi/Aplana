@@ -3,6 +3,12 @@ import java.util.Scanner;
 
 
 public class main {
+    /**
+     *    Главный класс
+     *    обеспечивает запуск калькулаятора
+     *    и взаимодействие с пользователем,
+     */
+
     public static void main(String[] args) {
         Help  help=  new Help();
         System.out.print(help.getHelp());
